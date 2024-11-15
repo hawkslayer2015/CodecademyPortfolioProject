@@ -14,3 +14,11 @@ class Player:
     def __repr__(self):
         pass
 
+# Dictionary holding a deck of 52 card values. Note: 11, 12, 13, and 14 are Jack, Queen, King, and Ace, respectivly.
+deck_of_cards = {
+    "Spades": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "Hearts": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "Clubs": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "Diamonds": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
