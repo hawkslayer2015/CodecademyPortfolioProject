@@ -20,6 +20,7 @@ class Player:
         {a} has played {c} games - Won {d} and lost {e}
         """.format(a=self.name, b=self.skill_level, c=self.has_played, d=self.has_won, e=self.has_lost)
 
+# A list of all 52 suited cards + one JOKER card (53 cards total).
 deck_of_cards = [
     "2 of Hearts", "3 of Hearts", "4 of Hearts", "5 of Hearts", "6 of Hearts", "7 of Hearts", "8 of Hearts", "9 of Hearts", "10 of Hearts", "Jack of Hearts", "Queen of Hearts", "King of Hearts", "Ace of Hearts",
     "2 of Clubs", "3 of Clubs", "4 of Clubs", "5 of Clubs", "6 of Clubs", "7 of Clubs", "8 of Clubs", "9 of Clubs", "10 of Clubs", "Jack of Clubs", "Queen of Clubs", "King of Clubs", "Ace of Clubs",
@@ -28,7 +29,9 @@ deck_of_cards = [
     "JOKER"
 ]
 
-
+# This function (deal) returns one randomly chosen card from deck_of_cards. The chosen card is then removed from deck_of_cards (so it cannot be chosen again).
+def deal():
+    return deck_of_cards.pop(random.randint(0, len(deck_of_cards)-1))
 
 
 
