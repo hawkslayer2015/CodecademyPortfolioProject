@@ -66,5 +66,37 @@ def get_value(card):
         card_value = 0
     return card_value
 
+game_counter = 0
+current_card = ""
+player_1 = Player()
 
+# Gameplay starts here!
+# Introduction...
+print("""
+------------------------------------------------------------------------------------------------------
+00  00  00  000000  00  00  000000  000000    000000  000000    00      000000  0    0  000000  000000
+00  00  00  00  00  00  00  00      00  00    00  00  00  00    00      00  00  0    0  00      00  00
+00  00  00  00      00  00  00      00  00    00  00  00  00    00      00  00  0 00 0  00      00  00
+000000  00  000000  000000  000000  000000    00  00  000000    00      00  00  0 00 0  000000  000000
+00  00  00  00  00  00  00  00      00 00     00  00  00 00     00      00  00  0 00 0  00      00 00 
+00  00  00  00  00  00  00  00      00  00    00  00  00  00    00      00  00  0 00 0  00      00  00
+00  00  00  000000  00  00  000000  00  00    000000  00  00    000000  000000  000000  000000  00  00
+------------------------------------------------------------------------------------------------------
 
+                   Welcome to 'Higher or Lower'! A fun and simple game of chance
+
+              If you are ready to play your first game, please enter your name below:
+""")
+
+player_1 = input(">>> ")
+# User is prompted to type their name.
+print("\nHi {}!  I'm going to deal you a card and all you have to do is guess whether the next card dealt will be 'Higher or Lower'".format(player_1.title()))
+print("The highest value card is an ACE and the lowest value card is a TWO.")
+print("Everytime you guess correctly your skill level score will increase by one point!")
+print("However, an incorrect guess will deduct a point from your score!")
+print("AND... if you draw a JOKER card your score will reset at ZERO!!!")
+print("The game is won when you reach skill level 10, or lost when your skill level reaches zero.\n")
+print("If you're ready to start press ENTER now!\n")
+input(">>> ")
+
+print("Game starts")
