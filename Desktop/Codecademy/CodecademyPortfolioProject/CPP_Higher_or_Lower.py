@@ -33,7 +33,38 @@ deck_of_cards = [
 def deal():
     return deck_of_cards.pop(random.randint(0, len(deck_of_cards)-1))
 
-
+# This function (get_value) takes a card name (str) and returns its value as an integer - ie. '5 of Clubs' = 5 and 'Jack of Hearts' = 11.
+def get_value(card):
+    card_value = 0
+    if "2" in card:
+        card_value = 2
+    elif "3" in card:
+        card_value = 3
+    elif "4" in card:
+        card_value = 4
+    elif "5" in card:
+        card_value = 5
+    elif "6" in card:
+        card_value = 6
+    elif "7" in card:
+        card_value = 7
+    elif "8" in card:
+        card_value = 8
+    elif "9" in card:
+        card_value = 9
+    elif "10" in card:
+        card_value = 10
+    elif "Jack" in card:
+        card_value = 11
+    elif "Queen" in card:
+        card_value = 12
+    elif "King" in card:
+        card_value = 13
+    elif "Ace" in card:
+        card_value = 14
+    else:
+        card_value = 0
+    return card_value
 
 
 
