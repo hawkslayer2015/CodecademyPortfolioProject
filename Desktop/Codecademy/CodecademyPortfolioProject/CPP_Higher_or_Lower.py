@@ -66,8 +66,6 @@ def get_value(card):
         card_value = 0
     return card_value
 
-game_counter = 0
-current_card = ""
 player_1 = Player()
 
 # Gameplay starts here!
@@ -88,9 +86,9 @@ print("""
               If you are ready to play your first game, please enter your name below:
 """)
 
-player_1 = input(">>> ")
+player_1.name = input(">>> ")
 # User is prompted to type their name.
-print("\nHi {}!  I'm going to deal you a card and all you have to do is guess whether the next card dealt will be 'Higher or Lower'".format(player_1.title()))
+print("\nHi {}!  I'm going to deal you a card and all you have to do is guess whether the next card dealt will be 'Higher or Lower'".format(player_1.name.title()))
 print("The highest value card is an ACE and the lowest value card is a TWO.")
 print("Everytime you guess correctly your skill level score will increase by one point!")
 print("However, an incorrect guess will deduct a point from your score!")
@@ -99,4 +97,57 @@ print("The game is won when you reach skill level 10, or lost when your skill le
 print("If you're ready to start press ENTER now!\n")
 input(">>> ")
 
-print("Game starts")
+def gameplay():
+    first_card = deal()
+    while player_1.skill_level > 0 and player_1.skill_level < 10:
+        first_card_value = get_value(first_card)
+        print("The current card is {}".format(first_card))
+        print("Will the next card be 'higher or lower'?")
+        print("Type 'H' or 'L' and press ENTER")
+        guess = input(">>> ")
+        guess = guess.upper()
+        while guess != "HIGHER" and guess != "LOWER":
+            if "H" in guess:
+                guess = "HIGHER"
+            elif "L" in guess:
+                guess = "LOWER"
+            else:
+                print("Oops! Input not recognised. Try typing either 'H' or 'L'")
+                guess = input(">>> ")
+                guess = guess.upper()
+        print("\nYou guessed {}...".format(guess))
+        second_card = deal()
+        second_card_value = get_value(second_card)
+        result = ""
+        if second_card == "JOKER":
+            print("Oh no! You've been dealt a JOKER! - Score reset to zero!")
+            player_1.skill_level = 0
+            player_1.has_lost += 1
+        elif first_card_value == second_card_value:
+            result = "SAME VALUE"
+        elif first_card_value > second_card_value:
+            result = "LOWER"
+        elif first_card_value < second_card_value:
+            result = "HIGHER"
+        print("The card dealt is {}...".format(second_card))
+        if result == "SAME VALUE":
+            print("Both cards are of same value - No score!")
+        elif result == guess:
+            print("You guessed correctly - One point scored!")
+            player_1.skill_level += 1
+            player_1.has_won += 1
+        else:
+            print("Bad luck, you guessed incorrectly - One point deducted!")
+            player_1.skill_level -= 1
+            player_1.has_lost += 1
+        player_1.has_played += 1
+        if player_1.skill_level > 0 and player_1.skill_level < 10:
+            first_card = second_card
+            print("\nYour current score is {}. Ready to play round {}?".format(player_1.skill_level, player_1.has_played + 1))
+            input(">>> ")
+        elif player_1.skill_level == 0:
+            print("\nGAME OVER! Better luck next time")
+        elif player_1.skill_level == 10:
+            print("\nCONGRATULATIONS! You have scored 10 points! You win!")
+    
+gameplay()
